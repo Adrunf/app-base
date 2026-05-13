@@ -1,0 +1,5 @@
+dependencies {
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    compileOnly 'jakarta.validation:jakarta.validation-api'
+}

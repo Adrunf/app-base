@@ -1,0 +1,5 @@
+rootProject.name = 'app-base'
+include 'app-base-client'
+include 'app-base-core'
+include 'app-base-services'
+include 'app-base-vo'
