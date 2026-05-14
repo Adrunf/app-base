@@ -1,6 +1,6 @@
 package com.ec.app.microservices.config;
 
-import com.querydsl.jpa.JPQLQuery;
+import com.querydsl.core.types.EntityPath;
 import com.querydsl.jpa.impl.JPAQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

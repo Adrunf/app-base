@@ -1,37 +1,39 @@
 dependencies {
+
     api project(":app-base-client")
 
-    implementation 'com.ec.app.entities:app-entities'
-
-    // Context
+    // Spring
     implementation 'org.springframework.boot:spring-boot-autoconfigure'
-
-    // Data
-    implementation 'org.springframework.data:spring-data-jpa'
-    implementation 'com.querydsl:querydsl-jpa'
-    implementation 'com.mysql:mysql-connector-j'
-    implementation 'jakarta.persistence:jakarta.persistence-api'
-
-    implementation 'org.hibernate:hibernate-core'
-    implementation 'org.hibernate:hibernate-entitymanager'
-
-    implementation 'jakarta.annotation:jakarta.annotation-api'
-
-    implementation 'org.mapstruct:mapstruct'
-    annotationProcessor "org.mapstruct:mapstruct-processor"
-    compileOnly 'jakarta.servlet:jakarta.servlet-api'
-
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
+    // JPA
+    implementation 'org.springframework.data:spring-data-jpa'
+    implementation 'org.hibernate.orm:hibernate-core:6.4.1.Final'
+
+    // Database
+    implementation 'com.mysql:mysql-connector-j'
+
+    // QueryDSL
+    implementation 'com.querydsl:querydsl-jpa:5.1.0:jakarta'
+
+    annotationProcessor 'com.querydsl:querydsl-apt:5.0.0:jakarta'
+    annotationProcessor 'jakarta.persistence:jakarta.persistence-api'
+    annotationProcessor 'jakarta.annotation:jakarta.annotation-api'
+
+    // Jakarta
+    implementation 'jakarta.persistence:jakarta.persistence-api'
+    implementation 'jakarta.annotation:jakarta.annotation-api'
+    compileOnly 'jakarta.servlet:jakarta.servlet-api'
+
+    // Mapstruct
+    implementation 'org.mapstruct:mapstruct'
+    annotationProcessor 'org.mapstruct:mapstruct-processor'
+
+    // Lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
-    //Jasper
+    // Jasper
     implementation 'net.sf.jasperreports:jasperreports'
     implementation 'com.lowagie:itext'
-
-}
-
-jar {
-    enabled = true
 }

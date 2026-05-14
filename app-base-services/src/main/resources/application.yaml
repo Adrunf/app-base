@@ -8,7 +8,7 @@ logging:
 
 server:
   servlet:
-    context-path: /person
+    context-path: /base
   max-http-header-size: 40KB
 
 management:
@@ -17,7 +17,7 @@ management:
 
 spring:
   application:
-    name: app-person
+    name: app-base
   profiles:
     active: dev
   datasource:
