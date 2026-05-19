@@ -1,6 +1,13 @@
 package com.ec.app.microservices.province;
 
+import lombok.Data;
+
 /**
  * @author arobayo
- */public class ProvinceDTO {
+ */
+@Data
+public class ProvinceDTO {
+    private Integer provinceId;
+    private String name;
+    private Integer population;
 }

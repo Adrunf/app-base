@@ -1,6 +1,6 @@
 package com.ec.app.microservices.person.service;
 
-import com.ec.app.microservices.person.PersonVO;
+import com.ec.app.microservices.person.PersonDTO;
 import com.ec.app.microservices.person.repository.IPersonRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -25,7 +25,12 @@ public class PersonService implements IPersonService{
     private IPersonRepository personRepository;
 
     @Override
-    public List<PersonVO> findAll() {
+    public List<PersonDTO> findAll() {
         return personRepository.findAll();
+    }
+
+    @Override
+    public PersonDTO findByIdentification(String identification) {
+        return personRepository.findById(identification);
     }
 }
