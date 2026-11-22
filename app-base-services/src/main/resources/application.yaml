@@ -1,42 +1,15 @@
-logging:
-  level:
-    org:
-      springframework:
-        web: INFO
-      hibernate: ERROR
-      keycloak: ERROR
-
-server:
-  servlet:
-    context-path: /base
-  max-http-header-size: 40KB
-
-management:
-  security:
-    enabled: false
-
+# Configuración común a todos los entornos.
+# El perfil NO se fija aquí: se activa con la variable SPRING_PROFILES_ACTIVE (ej. dev).
 spring:
   application:
-    name: app-base
-  profiles:
-    active: dev
-  datasource:
-    hikari:
-      connectionTimeout: 120000
-      idleTimeout: 120000
-      maxLifetime: 1800000
+    name: gimnasio-api
   jpa:
-    show-sql: false
+    open-in-view: false
     hibernate:
-      ddl-auto: none
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-    properties:
-      hibernate:
-        format_sql: true
-        dialect: org.hibernate.dialect.MySQL8Dialect
+      ddl-auto: validate        # nunca update/create: las tablas las crea Flyway
+      # Sin estrategia de nombres propia: Spring Boot convierte
+      # fechaInicio -> fecha_inicio, que es como están las tablas.
 
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
+logging:
+  level:
+    org.springframework.web: INFO

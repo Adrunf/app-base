@@ -1,0 +1,25 @@
+# Base de datos para DESARROLLO. En producción se configura aparte.
+# Uso: docker compose up -d
+services:
+  db:
+    image: postgres:17          # fijar la misma versión mayor que se usará en producción
+    container_name: gimnasio-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      TZ: America/Guayaquil
+    ports:
+      # Solo accesible desde tu propia máquina
+      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - gimnasio-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  gimnasio-db-data:

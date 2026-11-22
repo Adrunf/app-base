@@ -1,16 +1,22 @@
+# Perfil de desarrollo. Activar con: SPRING_PROFILES_ACTIVE=dev
 server:
   port: 8081
 
 spring:
+  config:
+    # Lee las variables del archivo .env (el mismo que usa docker compose)
+    import: optional:file:.env[.properties]
   datasource:
-    url: jdbc:mysql://localhost:3306/base_app?serverTimezone=UTC&allowPublicKeyRetrieval=true
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: password
-
-eureka:
-  instance:
-    hostname: localhost
-  client:
-    service-url:
-      default-zone: http://localhost:8761/eureka/
+    url: jdbc:postgresql://localhost:${POSTGRES_PORT:5432}/${POSTGRES_DB}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: UTC
+  flyway:
+    enabled: true
+    # db/dev es TEMPORAL (tabla de prueba "person"). Quitarlo al terminar la prueba.
+    locations: classpath:db/migration,classpath:db/dev

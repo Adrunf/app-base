@@ -11,7 +11,7 @@ dependencies {
     implementation 'org.hibernate.orm:hibernate-core:6.4.1.Final'
 
     // Database
-    implementation 'com.mysql:mysql-connector-j'
+    implementation("org.postgresql:postgresql")
 
     // QueryDSL
     implementation 'com.querydsl:querydsl-jpa:5.1.0:jakarta'
@@ -36,4 +36,7 @@ dependencies {
     // Jasper
     implementation 'net.sf.jasperreports:jasperreports'
     implementation 'com.lowagie:itext'
+
+    // FLyway
+    implementation 'org.flywaydb:flyway-core:9.22.3'
 }
