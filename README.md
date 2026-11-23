@@ -1,0 +1,1 @@
+Proyect base spring boot con Java 21, PostgreSQL, Flyway.
